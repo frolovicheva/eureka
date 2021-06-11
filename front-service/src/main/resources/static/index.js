@@ -1,5 +1,5 @@
 angular.module('app', []).controller('indexController', function ($scope, $http) {
-    const contextPath = 'http://localhost:8189/market';
+    const contextPath = 'http://localhost:8190/market';
 
     $scope.loadPage = function (page) {
         $http({
@@ -28,34 +28,11 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         });
     };
 
-    $scope.createNewProduct = function () {
-        $http.post(contextPath + '/api/v1/products', $scope.newProduct)
-            .then(function successCallback(response) {
-                $scope.loadPage(1);
-                $scope.newProduct = null;
-            }, function errorCallback(response) {
-                console.log(response.data);
-                alert('Error: ' + response.data.messages);
-            });
-    };
 
     $scope.clickOnProduct = function (product) {
         console.log(product);
     }
 
-
-    $scope.addProductDtoToCart = function (id) {
-            $http({
-                url: contextPath + '/api/v1/cart/add/',
-                method: 'GET',
-                params: {
-                    id: id,
-                    temp: 'empty'
-                }
-            }).then(function (response) {
-                console.log("OK");
-            });
-        }
 
     $scope.generatePagesIndexes = function (startPage, endPage) {
         let arr = [];
