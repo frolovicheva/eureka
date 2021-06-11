@@ -15,12 +15,8 @@ import java.util.Optional;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public Page<Product> findPage(int page, int pageSize) {
-        return productRepository.findAllBy(PageRequest.of(page, pageSize));
-    }
-
-    public Optional<Product> findById(Long id) {
-        return productRepository.findById(id);
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 
 

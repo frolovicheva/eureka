@@ -8,5 +8,4 @@ import ru.geekbrains.april.market.models.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Page<Product> findAllBy(Pageable pageable);
 }
